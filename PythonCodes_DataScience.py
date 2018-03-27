@@ -23,6 +23,10 @@ import re
 
 import nltk
 from nltk.book import wordnet as wn
+from nltk.corpus import wordnet_ic
+
+import gensim
+
 
 deer = wn.synset('deer.n.01')
 elk = wn.synset('elk.n.01')
@@ -33,9 +37,13 @@ deer.path_similarity(elk)
 
 print(deer.path_similarity(horse))
 
+brown_ic=wordnet_ic.ic('ic-brown.dat')
 
+a=deer.lin_similarity(elk,brown_ic)
+z=deer.lin_similarity(horse,brown_ic)
 
-
+print(a,z)
+print(type((a,z)))
 '''
 text11 = "Children shouldn't drink a sugary drink before bed."
 a=text11.split(' ')
