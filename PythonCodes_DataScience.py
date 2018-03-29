@@ -27,12 +27,31 @@ from nltk.corpus import wordnet_ic
 
 import gensim
 
+'''
+########## import csv
 #os.chdir('C:\Users\me\Documents')
 
 #wd=os.getcwd()
 #a = os.chdir(r'C:\Users\Dmob\Desktop\ANDROID DEVELOPMENT\KAGGLE\kaggle models\churn ng data science')
 #wd2=os.getcwd()
+#print(os.getcwd())
 
+#df=pd.read_csv(R"C:\Users\Dmob\Desktop\ANDROID DEVELOPMENT\KAGGLE\kaggle models\churn ng data science\TRAIN.csv", sep=',')
+#print(df.values)
+
+DIR=r'C:\Users\Dmob\Desktop\ANDROID DEVELOPMENT\KAGGLE\kaggle models\churn ng data science'
+
+train_data = pd.read_csv(DIR+'/train.csv', delimiter=',')
+#train_inputs = train_data.ix[:,0]
+#train_labels = train_data.drop(0, axis=1)
+test_data = pd.read_csv(DIR+'/test.csv', delimiter=',')
+
+
+#reader = csv.reader(open(R"C:\Users\Dmob\Desktop\ANDROID DEVELOPMENT\KAGGLE\kaggle models\churn ng data science\TRAIN.csv", "rb"), delimiter=",")
+#x = list(reader)
+
+print(train_data.head(4))
+'''
 
 deer = wn.synset('deer.n.01')
 elk = wn.synset('elk.n.01')

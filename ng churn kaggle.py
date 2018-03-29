@@ -19,13 +19,26 @@ from collections import namedtuple
 import re
 import gensim
 import os
-#os.chdir('C:\Users\me\Documents')
+import csv
 
-#wd=os.getcwd()
-#a = os.chdir(r'C:\Users\Dmob\Desktop\ANDROID DEVELOPMENT\KAGGLE\kaggle models\churn ng data science')
-#wd2=os.getcwd()
-print(wd2)
+#train_inputs = train_data.ix[:,0]
+#train_labels = train_data.drop(0, axis=1)
+
+DIR=r'C:\Users\Dmob\Desktop\ANDROID DEVELOPMENT\KAGGLE\kaggle models\churn ng data science'
+train_data = pd.read_csv(DIR+'/train.csv', delimiter=',')
+test_data = pd.read_csv(DIR+'/test.csv', delimiter=',')
+
+print(train_data.head(4))
 
 
-df=pd.read_csv("TRAIN.csv", sep=',',header=None)
-df.values
+
+
+
+
+
+
+
+
+
+
+
