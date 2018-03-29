@@ -27,6 +27,12 @@ from nltk.corpus import wordnet_ic
 
 import gensim
 
+#os.chdir('C:\Users\me\Documents')
+
+#wd=os.getcwd()
+#a = os.chdir(r'C:\Users\Dmob\Desktop\ANDROID DEVELOPMENT\KAGGLE\kaggle models\churn ng data science')
+#wd2=os.getcwd()
+
 
 deer = wn.synset('deer.n.01')
 elk = wn.synset('elk.n.01')
