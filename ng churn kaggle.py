@@ -30,7 +30,7 @@ sns.set(style="white")
 
 DIR=r'C:\Users\Dmob\Desktop\ANDROID DEVELOPMENT\KAGGLE\kaggle models\churn ng data science'
 train_data = pd.read_csv(DIR+'/train.csv', delimiter=',')
-#test_data = pd.read_csv(DIR+'/test.csv', delimiter=',')
+test_data = pd.read_csv(DIR+'/test.csv', delimiter=',')
 
 
 #print(train_data.head(4))
@@ -41,6 +41,8 @@ from sklearn.decomposition import PCA
 from sklearn.model_selection import train_test_split
 from sklearn import preprocessing
 from sklearn.metrics import confusion_matrix
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score
 
 #df2 = pd.get_dummies(train_data)
 #print(train_data.columns.values)  #print columns
@@ -89,7 +91,7 @@ confusion_matrix = confusion_matrix(y_test, y_pred)
 print(confusion_matrix)
 '''
 
-
+'''
 from sklearn.svm import SVC
 svm = SVC(kernel='linear', C=1).fit(X_train, y_train)
 
@@ -100,13 +102,111 @@ print('SVM  classifier (default settings)\n', confusion)
 
 from sklearn.metrics import accuracy_score
 print (accuracy_score(y_test, svm_predicted))
+'''
+'''
+X_train2, X_test2, y_train2, y_test2 = train_test_split(x, y, random_state=0)
+from sklearn.metrics import accuracy_score
+
+model22 = GaussianNB()
+model22.fit(X_train2,y_train2)
+aa= model22.predict(X_test2)
+print ('gaussian ',accuracy_score(y_test2, aa))
+
+'''
+
+# In[ ]:
+from sklearn.ensemble import RandomForestClassifier
+X_train3, X_test3, y_train3, y_test3 = train_test_split(x, y, random_state=0)
+
+model33 = RandomForestClassifier(random_state=0)
+model33.fit(X_train3,y_train3)
+ll = model33.predict(X_test3)
+print ('rforest ',accuracy_score(y_test3, ll))
+
+#print(type(ll))
+
+test_data['Network type subscription in Month 1'] = le.fit_transform(test_data['Network type subscription in Month 1'].astype(str))
+test_data['Network type subscription in Month 2'] = le.fit_transform(test_data['Network type subscription in Month 2'].astype(str))
+
+
+le2 = preprocessing.LabelEncoder()
+test_data2 = test_data.apply(le2.fit_transform)
+
+#df[cat] = le.fit_transform(df['Network type subscription in Month 1'].astype(str))
+
+kk = model33.predict(test_data2)
+
+print(type(kk))
+
+kk2 = kk.copy()
+test_data22=test_data2.copy()
+
+s1 = pd.Series(kk2, name='Churn Status')
+
+result = pd.concat([test_data22, s1], axis=1)
+result2 = pd.concat([test_data, s1], axis=1)
+
+#print(result.head(4))
+#print(result2.head(4))
+
+result2.to_csv('Test_Done.csv', sep=',', index=False)
+
+#result = pd.concat([df1, df4], axis=1, join_axes=[df1.index])
+
+from sklearn.ensemble import GradientBoostingClassifier
+
+clf = GradientBoostingClassifier(random_state = 0).fit(X_train3, y_train3)
+pp = clf.predict(test_data2)
+print(clf.score(X_test3, y_test3))
+
+print(type(pp))
+
+pp2 = pp.copy()
+test_data22=test_data2.copy()
+
+s2 = pd.Series(pp2, name='Churn Status')
+
+result3 = pd.concat([test_data, s2], axis=1)
+
+result3.to_csv('Test_Done2.csv', sep=',', index=False)
 
 
 
 
 
+'''
+############# good model
+from sklearn.ensemble import RandomForestClassifier
+X_train3, X_test3, y_train3, y_test3 = train_test_split(x, y, random_state=0)
+
+model33 = RandomForestClassifier(max_features=15,n_estimators =1,min_samples_split=2,
+                                 min_samples_leaf=1,max_depth=10,
+                                 criterion="entropy",class_weight='balanced',
+                                 random_state=0)
+model33.fit(X_train3,y_train3)
+ll = model33.predict(X_test3)
+print ('rforest ',accuracy_score(y_test3, ll))
 
 
+
+
+'''
+
+
+'''
+from sklearn.ensemble import RandomForestClassifier
+X_train3, X_test3, y_train3, y_test3 = train_test_split(x, y, random_state=0)
+
+for a in range(0,20):
+    model33 = RandomForestClassifier(max_features=15,n_estimators =1,min_samples_split=2,
+                                 min_samples_leaf=1,max_depth=10,
+                                 criterion="entropy",class_weight='balanced',
+                                 random_state=a)
+    model33.fit(X_train3,y_train3)
+    ll = model33.predict(X_test3)
+    print ('rforest ',accuracy_score(y_test3, ll, a))
+    
+'''
 
 # In[ ]:
 ###########################
