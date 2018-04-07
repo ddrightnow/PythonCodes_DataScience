@@ -80,39 +80,6 @@ pca = PCA(n_components=2).fit_transform(x)
 X_train, X_test, y_train, y_test = train_test_split(pca, y, random_state=0)
 
 
-'''
-model = LogisticRegression()
-model.fit(X_train,y_train)
-
-#predictig test set results and creating cofsion matrix
-
-y_pred = model.predict(X_test)
-confusion_matrix = confusion_matrix(y_test, y_pred)
-print(confusion_matrix)
-'''
-
-'''
-from sklearn.svm import SVC
-svm = SVC(kernel='linear', C=1).fit(X_train, y_train)
-
-svm_predicted = svm.predict(X_test)
-confusion = confusion_matrix(y_test, svm_predicted)
-
-print('SVM  classifier (default settings)\n', confusion)
-
-from sklearn.metrics import accuracy_score
-print (accuracy_score(y_test, svm_predicted))
-'''
-'''
-X_train2, X_test2, y_train2, y_test2 = train_test_split(x, y, random_state=0)
-from sklearn.metrics import accuracy_score
-
-model22 = GaussianNB()
-model22.fit(X_train2,y_train2)
-aa= model22.predict(X_test2)
-print ('gaussian ',accuracy_score(y_test2, aa))
-
-'''
 
 # In[ ]:
 from sklearn.ensemble import RandomForestClassifier
@@ -171,6 +138,50 @@ result3 = pd.concat([test_data, s2], axis=1)
 result3.to_csv('Test_Done2.csv', sep=',', index=False)
 
 
+
+
+
+
+
+
+
+
+
+
+
+'''
+model = LogisticRegression()
+model.fit(X_train,y_train)
+
+###predictig test set results and creating cofsion matrix
+
+y_pred = model.predict(X_test)
+confusion_matrix = confusion_matrix(y_test, y_pred)
+print(confusion_matrix)
+'''
+
+'''
+from sklearn.svm import SVC
+svm = SVC(kernel='linear', C=1).fit(X_train, y_train)
+
+svm_predicted = svm.predict(X_test)
+confusion = confusion_matrix(y_test, svm_predicted)
+
+print('SVM  classifier (default settings)\n', confusion)
+
+from sklearn.metrics import accuracy_score
+print (accuracy_score(y_test, svm_predicted))
+'''
+'''
+X_train2, X_test2, y_train2, y_test2 = train_test_split(x, y, random_state=0)
+from sklearn.metrics import accuracy_score
+
+model22 = GaussianNB()
+model22.fit(X_train2,y_train2)
+aa= model22.predict(X_test2)
+print ('gaussian ',accuracy_score(y_test2, aa))
+
+'''
 
 
 
