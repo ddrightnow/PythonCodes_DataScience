@@ -84,6 +84,10 @@ y_pred = model.predict(X_test)
 print ('log ',accuracy_score(y_test, y_pred))
 
 
+import pickle
+filename = 'churn_telco_model.sav'
+pickle.dump(model, open(filename, 'wb'))
+
 ###
 '''
 model22 = GaussianNB()
