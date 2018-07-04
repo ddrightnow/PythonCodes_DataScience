@@ -34,7 +34,7 @@ X_train, X_test, Y_train, Y_test = model_selection.train_test_split(X, Y, test_s
 model = LogisticRegression()
 model.fit(X_train, Y_train)
 # save the model to disk
-filename = 'finalized_model.sav'
+filename = 'test_finalized_model.sav'
 pickle.dump(model, open(filename, 'wb'))
  
 # some time later...

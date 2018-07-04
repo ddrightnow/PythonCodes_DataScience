@@ -362,6 +362,7 @@ p2 = copy.deepcopy(p1)
 f=3
 t=copy.copy(f)
 
+#isinstance to check whether an object is an instance of a class
 print (isinstance (box,Point))
 print (isinstance (f,int))
 print (hasattr (box,'width'))
@@ -533,6 +534,23 @@ def example3():
 example3()
 
 '''
+'''
+If a global variable refers to a mutable value, you can modify the value without declaring
+the variable:
+known = {0:0, 1:1}
+def example4():
+known[2] = 1
+So you can add, remove and replace elements of a global list or dictionary, but if you want
+to reassign the variable, you have to declare it:
+def example5():
+global known
+known = dict()
+Global variables can be useful, but if you have a lot of them, and you modify them frequently,
+they can make programs hard to debug.
+'''
+
+
+
 
 '''
 
@@ -1098,6 +1116,13 @@ b()
 a()
 b()
 a()
+
+def c():
+    return a(),b(),a(),b(),a()
+    
+
+
+c()
 
 '''
 
